@@ -1,0 +1,1 @@
+{"virtualbox":{"/usr/share/nginx/www":{"create":true,"guestpath":"/usr/share/nginx/www","hostpath":"C:/Users/ozgun/DevOps_Projects/1-MultiTierWebAppSetup/www","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/ozgun/DevOps_Projects/1-MultiTierWebAppSetup","disabled":false,"__vagrantfile":true}}}
