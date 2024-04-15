@@ -1,0 +1,71 @@
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+  config.hostmanager.enabled = true 
+  config.hostmanager.manage_host = true
+
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+
+  # Every Vagrant development environment requires a box. You can search for boxes at https://vagrantcloud.com/search.
+
+  ### DB Virtual Machine  ####
+  config.vm.define "mysql01" do |mysql01|
+    mysql01.vm.box = "eurolinux-vagrant/centos-stream-9"
+    mysql01.vm.hostname = "mysql01"
+    mysql01.vm.network "private_network", ip: "10.9.8.55"
+    mysql01.vm.provider "virtualbox" do |vb|
+      vb.memory = "600"
+    end
+    mysql01.vm.provision "shell", path: "mysql.sh"
+  end
+
+  ### Memcache Virtual Machine  ####
+  config.vm.define "memcache01" do |memcache01|
+    memcache01.vm.box = "eurolinux-vagrant/centos-stream-9"
+    memcache01.vm.hostname = "memcache01"
+    memcache01.vm.network "private_network", ip: "10.9.8.54"
+    memcache01.vm.provider "virtualbox" do |vb|
+      vb.memory = "600"
+    end
+    memcache01.vm.provision "shell", path: "memcache.sh"
+  end
+
+  ### RabbitMQ Virtual Machine  ####
+  config.vm.define "rabbitmq01" do |rabbitmq01|
+    rabbitmq01.vm.box = "eurolinux-vagrant/centos-stream-9"
+    rabbitmq01.vm.hostname = "rabbitmq01"
+    rabbitmq01.vm.network "private_network", ip: "10.9.8.53"
+    rabbitmq01.vm.provider "virtualbox" do |vb|
+      vb.memory = "600"
+    end
+    rabbitmq01.vm.provision "shell", path: "rabbitmq.sh"
+  end
+
+  ### Tomcat Virtual Machine  ####
+  config.vm.define "app01" do |app01|
+    app01.vm.box = "eurolinux-vagrant/centos-stream-9"
+    app01.vm.hostname = "app01"
+    app01.vm.network "private_network", ip: "10.9.8.52"
+    app01.vm.provision "shell", path: "tomcat.sh"
+    app01.vm.provider "virtualbox" do |vb|
+      vb.memory = "600"
+    end
+  end
+
+
+  ### Nginx Virtual Machine  ####
+  config.vm.define "web01" do |web01|
+    web01.vm.box = "ubuntu/jammy64"
+    web01.vm.hostname = "web01"
+    web01.vm.network "private_network", ip: "10.9.8.51"
+    web01.vm.provider "virtualbox" do |vb|
+      vb.gui = true
+      vb.memory = "600"
+    end
+    web01.vm.provider "shell", path: "nginx.sh"
+  end
+end
