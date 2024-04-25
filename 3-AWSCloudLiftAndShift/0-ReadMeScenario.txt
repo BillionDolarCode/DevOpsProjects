@@ -31,10 +31,6 @@ Cloud Topology
     We also need 3 sequrity group to allow communication between services.
 4 - We need Amazon S3 bucket to store software artifact
 
-Required Tools
-
-
-
 
 Flow Of Execution
 1 - Login to AWS Account
