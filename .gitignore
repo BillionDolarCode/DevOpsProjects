@@ -1,4 +1,1 @@
 0-Prerequisites
-*.pem
-git rm --cached 5-ContainerizationofJavaProject/Prod_Key_PRJ3-2.pem
-git rm --cached 5-ContainerizationofJavaProject/Prod_Key_PRJ3-1.pem
